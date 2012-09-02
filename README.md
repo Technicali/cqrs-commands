@@ -58,6 +58,7 @@ cqrs-commands now creates an object with the following structure:
 *Note: The `id`, of course, will vary ;-).*
 
 Now you can send that command to the server using your favorite AJAX library, such as [http.js](https://github.com/goloroden/http.js).
+In case you want to track the command lateron, feel free to remember its `id`.
 
 That's it :-)!
 
