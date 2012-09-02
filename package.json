@@ -1,0 +1,11 @@
+{
+  "name": "cqrs-commands",
+  "version": "0.0.1",
+  "description": "cqrs-commands is a middleware for Connect / Express to create and manage commands.",
+  "author": "Golo Roden <webmaster@goloroden.de> (http://www.goloroden.de)",
+  "main": "./lib/commands.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goloroden/cqrs-commands"
+  }
+}
