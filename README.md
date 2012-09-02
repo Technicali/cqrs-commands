@@ -9,7 +9,8 @@ cqrs-commands is a middleware for Connect / Express to create and manage command
 
 ## Quick start
 
-Basically, using cqrs-commands is easy. All you need to do is to add a reference to it within your application:
+Basically, using cqrs-commands is easy. On the server-side all you need to do is to add a reference to it within your application,
+and register the commands you want to provide:
 
 ### On Node.js
 
@@ -17,8 +18,8 @@ Basically, using cqrs-commands is easy. All you need to do is to add a reference
 var commands = require('cqrs-commands');
 ```
 
-Additionally, you need to register any commands you want to provide within your application's configuration block. You can specify
-an arbitrary number of commands within the parameter array:
+Now you can provide actual commands to the client. For that, register them within your application's configuration block. You can
+specify an arbitrary number of commands within the parameter array:
 
 ```javascript
 app.use(commands([ 'createFoo' ]));
@@ -32,8 +33,11 @@ Use
 <script type="text/javascript" src="/commands/Command.js"></script>
 ```
 
-to get the client-side library of cqrs-commands. Now you are ready to create commands. For that call the `Command` constructor
-and specify the command's type and its payload:
+to get the client-side library of cqrs-commands. You do not need to provide this file manually, it is created by cqrs-commands on
+the fly.
+
+Now you are ready to create commands. For that, call the `Command` constructor and specify the command's type and its payload as
+parameters to the constructor:
 
 ```javascript
 var command = new Command('createFoo', { foo: 'bar' });
