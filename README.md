@@ -19,10 +19,15 @@ var commands = require('cqrs-commands');
 ```
 
 Now you can provide actual commands to the client. For that, register them within your application's configuration block. You can
-specify an arbitrary number of commands within the parameter array:
+specify an arbitrary number of commands within the parameter array. Additionally, you need to specify a callback that receives a
+command from the client and stores it within a command bus. The callback must return `true` when the command has been stored
+successfully; `false` otherwise.
 
 ```javascript
-app.use(commands([ 'createFoo' ]));
+app.use(commands([ 'createFoo' ], function (command) {
+  // Store the command in the command bus and return whether this has been successful.
+  return true;
+}));
 ```
 
 ### In the browser
@@ -57,8 +62,12 @@ cqrs-commands now creates an object with the following structure:
 
 *Note: The `id`, of course, will vary ;-).*
 
-Now you can send that command to the server using your favorite AJAX library, such as [http.js](https://github.com/goloroden/http.js).
-In case you want to track the command at a later point in time, feel free to remember its `id`.
+Now you can send the newly created command to the server using your favorite AJAX library, such as [http.js](https://github.com/goloroden/http.js).
+For that, use a `POST` request and send the command to the `/commands` url using the `application/json` content-type. If the command
+has successfully been stored within the command bus, cqrs-commands replies with an `202 Accepted` status code; otherwise the status
+code `503 Service Unavailable` is returned.
+
+*Note: In case you want to track the command at a later point in time, feel free to remember its `id`.*
 
 That's it :-)!
 
