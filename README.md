@@ -9,10 +9,14 @@ cqrs-commands is a middleware for Connect / Express to create and manage command
 
 ## Quick start
 
-Basically, using cqrs-commands is easy. On the server-side all you need to do is to add a reference to it within your application,
-and register the commands you want to provide:
+Basically, using cqrs-commands is easy.
 
 ### On Node.js
+
+On the server-side all you need to do is to add a reference to it within your application, and register the commands you want to
+provide.
+
+So, first add the reference:
 
 ```javascript
 var commands = require('cqrs-commands');
