@@ -24,13 +24,16 @@ var commands = require('cqrs-commands');
 
 Now you can provide actual commands to the client. For that, register them within your application's configuration block. You can
 specify an arbitrary number of commands within the parameter array. Additionally, you need to specify a callback that receives a
-command from the client and stores it within a command bus. The callback must return `true` when the command has been stored
-successfully; `false` otherwise.
+command from the client and stores it within a command bus. Once the command has been stored, the `callback` function is run. In
+case of an error, simply specify it as a parameter.
 
 ```javascript
-app.use(commands([ 'createFoo' ], function (command) {
-  // Store the command in the command bus and return whether this has been successful.
-  return true;
+app.use(commands([ 'createFoo' ], function (command, callback) {
+  // Store the command in the command bus.
+  // [...]
+
+  // Notify that this has been successful. If needed, provide an error as parameter.
+  callback();
 }));
 ```
 
