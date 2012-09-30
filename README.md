@@ -2,6 +2,8 @@
 
 cqrs-commands is a middleware for Connect / Express to create and manage commands.
 
+If you have any questions or feedback, feel free to contact me using [@goloroden](https://twitter.com/goloroden) on Twitter.
+
 ## Installation
 
     $ npm install cqrs-commands
